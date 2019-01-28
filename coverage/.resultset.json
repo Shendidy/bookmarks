@@ -1,7 +1,32 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/punchcafe/Projects/MakersAcademy_Course/1st_tri/w_task/bookmarkmanager/spec/bookmark_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/punchcafe/Projects/MakersAcademy_Course/1st_tri/w_task/bookmarkmanager/spec/features/index_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
     },
-    "timestamp": 1548694185
+    "timestamp": 1548696045
   }
 }
