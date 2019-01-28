@@ -2,6 +2,7 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
+# config.include Capybara::DSL
 Capybara.app = BookMarkManager
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
