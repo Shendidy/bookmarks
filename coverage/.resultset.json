@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/punchcafe/Projects/MakersAcademy_Course/1st_tri/w_task/bookmarkmanager/spec/bookmark_spec.rb": [
+      "/Users/shendidy/Makers/week4/challenges/bookmarks/bookmarks_manager/spec/bookmark_spec.rb": [
         1,
         1,
         1,
@@ -12,7 +12,18 @@
         null,
         null
       ],
-      "/Users/punchcafe/Projects/MakersAcademy_Course/1st_tri/w_task/bookmarkmanager/spec/features/index_spec.rb": [
+      "/Users/shendidy/Makers/week4/challenges/bookmarks/bookmarks_manager/spec/features/bookmarks_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/shendidy/Makers/week4/challenges/bookmarks/bookmarks_manager/spec/features/index_spec.rb": [
         1,
         null,
         1,
@@ -27,6 +38,6 @@
         null
       ]
     },
-    "timestamp": 1548696045
+    "timestamp": 1548769058
   }
 }
