@@ -6,7 +6,7 @@ feature 'Index' do
     expect(page).to have_content("My Bookmarks")
   end
   scenario 'see my bookmarks' do
-    visit('/bookmarks/index')
-    expect(page).to have_content("tumblr.com")
+    visit('/bookmarks')
+    expect(page).to have_content("google.com")
   end
 end
