@@ -1,8 +1,17 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require_relative './setup_test_database'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-# config.include Capybara::DSL
+
+ENV['ENVIRONMENT'] = 'test'
+
+RSpec.configure do |config|
+  config.before(:each) do
+    setup_test_database
+  end
+end
+
 Capybara.app = BookMarkManager
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([

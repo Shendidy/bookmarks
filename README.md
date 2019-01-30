@@ -57,7 +57,7 @@ To create the database:
 - Connect to psql
 - Create the database using the psql command CREATE DATABASE bookmark_manager;
 - Connect to the database using the pqsl command \c bookmark_manager;
-- Run the query saved in the file 01_create_bookmarks_table.sql
-
+- Run the query saved in the file 01_create_bookmarks_table.sql to create the required table
 - To be able to connect our code to the database we need to install gem pg, which is now in our Gemfile.
+- Create a new database just for testing 'bookmark_manager_test' purposes and create the same table 'bookmarks'.
 ```
