@@ -1,13 +1,12 @@
+# frozen_string_literal: true
+
 require 'pg'
 
+# Class comment...
 class AddUrl
-
   @db = 'bookmark_manager'
 
   def self.add_url(url)
-    puts 'sherif3'
-    puts url
-
     @db = 'bookmark_manager_test' if ENV['ENVIRONMENT'] == 'test'
 
     connection = PG.connect(dbname: @db)
