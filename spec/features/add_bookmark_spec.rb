@@ -11,7 +11,8 @@ feature 'bookmarks' do
     expect(page).to have_content('Insert url:')
   end
 
-  scenario 'Adding a url will be added to the database and shown in the bookmarks list' do
+  scenario 'Adding a url will be added to the database
+    and shown in the bookmarks list' do
     visit('/')
     click_button 'Manage your bookmarks list'
     click_button 'Add a url'

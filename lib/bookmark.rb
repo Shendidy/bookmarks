@@ -18,4 +18,12 @@ class Bookmark
 
     bookmarks_list
   end
+
+  def self.create
+    @bookmark = Bookmark.new
+  end
+
+  def self.instance
+    @bookmark
+  end
 end
