@@ -7,7 +7,7 @@ I want to see a list of saved bookmarks
 
 Add new bookmarks
 As a user
-to be able to add to me current bookmark list
+to be able to build up my bookmark list over time
 I want to save new URLs
 
 Delete bookmarks
@@ -43,12 +43,35 @@ I want them to be able to access their own list
 ```
 # Domain model
 ```
-,---------------.
-|Bookmarks      |
-|---------------|
-|+Show bookmarks|
-|---------------|
-`---------------'
+┌──────┐            ┌──────────┐                   ┌─────┐                       ┌────────┐          ┌────┐
+│Client│            │Controller│                   │Model│                       │Database│          │View│
+└──┬───┘            └────┬─────┘                   └──┬──┘                       └───┬────┘          └─┬──┘
+   │ Sends a get request │                            │                              │                 │   
+   │ ────────────────────>                            │                              │                 │   
+   │                     │                            │                              │                 │   
+   │                     │ Requests values from Model │                              │                 │   
+   │                     │ ───────────────────────────>                              │                 │   
+   │                     │                            │                              │                 │   
+   │                     │                            │ Queries for saved information│                 │   
+   │                     │                            │ ─────────────────────────────>                 │   
+   │                     │                            │                              │                 │   
+   │                     │                            │   Returns saved information  │                 │   
+   │                     │                            │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                 │   
+   │                     │                            │                              │                 │   
+   │                     │ Returns the reauired values│                              │                 │   
+   │                     │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                              │                 │   
+   │                     │                            │                              │                 │   
+   │                     │                            Sends and HTTP message         │                 │   
+   │                     │ ────────────────────────────────────────────────────────────────────────────>   
+   │                     │                            │                              │                 │   
+   │                     │                            Returns the html code          │                 │   
+   │                     │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    
+   │                     │                            │                              │                 │   
+   │ Return the html code│                            │                              │                 │   
+   │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─                             │                              │                 │   
+┌──┴───┐            ┌────┴─────┐                   ┌──┴──┐                       ┌───┴────┐          ┌─┴──┐
+│Client│            │Controller│                   │Model│                       │Database│          │View│
+└──────┘            └──────────┘                   └─────┘                       └────────┘          └────┘
 ```
 
 # Database
@@ -60,4 +83,6 @@ To create the database:
 - Run the query saved in the file 01_create_bookmarks_table.sql to create the required table
 - To be able to connect our code to the database we need to install gem pg, which is now in our Gemfile.
 - Create a new database just for testing 'bookmark_manager_test' purposes and create the same table 'bookmarks'.
+- Created a button in the main index to take the user to managing their database.
+- 
 ```

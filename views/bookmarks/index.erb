@@ -1,6 +1,15 @@
-<h1> My bookmarks: </h1>
-<ol type = "i">
-  <% @bookmarks.each do |bookmark| %>
-    <li><%= bookmark %></li>
-  <% end %>
-</ol>
+<html>
+  <head>
+  </head>
+  <body>
+    <form action = '/add_page' >
+      <input type = 'submit' value = 'Add a url' >
+    </form>
+    <h1> My Bookmarks: </h1></br>
+    <ol type = "i">
+      <% @bookmarks.each do |bookmark| %>
+        <li><%= bookmark %></li>
+      <% end %>
+    </ol>
+  </body>
+</html>
