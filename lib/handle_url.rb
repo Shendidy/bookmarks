@@ -4,10 +4,9 @@ require 'pg'
 
 # Class comment...
 class HandleUrl
-
   def self.set_db
-    @db = (ENV['ENVIRONMENT'] == 'test' ? 'bookmark_manager_test' :
-       'bookmark_manager')
+    @db = 'bookmark_manager'
+    @db = 'bookmark_manager_test' if ENV['ENVIRONMENT'] == 'test'
     @connection = PG.connect(dbname: @db)
   end
 
@@ -20,5 +19,11 @@ class HandleUrl
   def self.delete_url(id)
     set_db
     @connection.exec("DELETE FROM bookmarks WHERE id = #{id};")
+  end
+
+  def self.update_url(id, url, title)
+    set_db
+    @connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}'
+      WHERE id = #{id};")
   end
 end

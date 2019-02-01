@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'handle_url'
 require 'bookmark'
 

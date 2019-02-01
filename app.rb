@@ -10,9 +10,24 @@ class BookMarkManager < Sinatra::Base
   enable :sessions, :method_override
 
   delete '/bookmarks/:id' do
+    HandleUrl.delete_url(params['id'])
+    redirect '/bookmarks'
+  end
 
-  HandleUrl.delete_url(params['id'])
-  redirect '/bookmarks'
+  post '/update_bookmark_params' do
+    @id = params['Uid']
+    @url = params['Uurl']
+    @title = params['Utitle']
+    erb :'/bookmarks/update'
+  end
+
+  post '/update_bookmark' do
+    @id = params['id']
+    @url = params['new_url']
+    @title = params['new_title']
+    HandleUrl.update_url(@id, @url, @title)
+
+    redirect '/bookmarks'
   end
 
   get '/' do
@@ -23,10 +38,20 @@ class BookMarkManager < Sinatra::Base
     erb :'/bookmarks/add'
   end
 
+  get '/update_bookmark' do
+    erb :'/bookmarks/update'
+  end
+
   post '/add_urls' do
     @url = Url.create(params[:new_url], params[:title])
 
     redirect '/add_url'
+  end
+
+  post '/update_bookmark' do
+    HandleUrl.update_url(params['url'], params['title'])
+
+    redirect '/bookmarks'
   end
 
   get '/add_url' do

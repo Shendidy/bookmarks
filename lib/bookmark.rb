@@ -6,11 +6,9 @@ require 'PG'
 class Bookmark
   attr_accessor :db
 
-  @db = 'bookmark_manager'
   def self.all
+    set_db
     bookmarks_list = []
-
-    @db = 'bookmark_manager_test' if ENV['ENVIRONMENT'] == 'test'
 
     connection = PG.connect(dbname: @db)
     result = connection.exec('SELECT id, url, title FROM bookmarks ORDER BY id')
@@ -20,5 +18,11 @@ class Bookmark
     end
 
     bookmarks_list
+  end
+
+  def self.set_db
+    return @db = 'bookmark_manager_test' if ENV['ENVIRONMENT'] == 'test'
+
+    @db = 'bookmark_manager'
   end
 end
