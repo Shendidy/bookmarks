@@ -7,18 +7,18 @@ describe '.all' do
     connection = PG.connect(dbname: 'bookmark_manager_test')
 
     # Add the test data
-    connection.exec("INSERT INTO bookmarks (url)
-    VALUES ('http://www.makersacademy.com');")
-    connection.exec("INSERT INTO bookmarks (url)
-    VALUES('http://www.destroyallsoftware.com');")
-    connection.exec("INSERT INTO bookmarks (url)
-    VALUES('http://www.google.com');")
+    connection.exec("INSERT INTO bookmarks (url, title)
+    VALUES ('http://www.makersacademy.com', 'Makers Academy');")
+    connection.exec("INSERT INTO bookmarks (url, title)
+    VALUES('http://www.destroyallsoftware.com', 'Destroy all software');")
+    connection.exec("INSERT INTO bookmarks (url, title)
+    VALUES('http://www.google.com', 'British google');")
 
     bookmarks = Bookmark.all
 
-    expect(bookmarks).to include('http://www.makersacademy.com')
-    expect(bookmarks).to include('http://www.destroyallsoftware.com')
-    expect(bookmarks).to include('http://www.google.com')
+    expect(bookmarks[0].value?('http://www.makersacademy.com')).to eq true
+    expect(bookmarks[1].value?('http://www.destroyallsoftware.com')).to eq true
+    expect(bookmarks[2].value?('British google')).to eq true
   end
 
   it 'checks the ENVIRONMENT variable value' do

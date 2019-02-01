@@ -5,10 +5,16 @@
     <form action = '/add_page' >
       <input type = 'submit' value = 'Add a url' >
     </form>
-    <h1> My Bookmarks: </h1></br>
+    <h1> My Bookmarks: </h1><br/>
     <ol type = "1">
       <% @bookmarks.each do |bookmark| %>
-        <li><%= bookmark %></li>
+        <li class = 'bookmark' >
+          <a href='<%= bookmark['url'] %>' target='_blank'><%= bookmark['title'] %></a>
+          <form action = '/bookmarks/<%= bookmark['id'] %>' method = 'post'>
+            <input type = 'hidden' name = '_method' value = 'DELETE' />
+            <input type = 'submit' value = 'Delete' />
+          </form>
+        </li>
       <% end %>
     </ol>
   </body>

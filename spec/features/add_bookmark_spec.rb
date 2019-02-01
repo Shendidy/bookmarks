@@ -17,8 +17,9 @@ feature 'bookmarks' do
     click_button 'Manage your bookmarks list'
     click_button 'Add a url'
     fill_in 'new_url', with: 'http://www.masrawy.2com'
+    fill_in 'title', with: 'Egypt news'
     click_button 'Add'
 
-    expect(page).to have_content('masrawy')
+    expect(page).to have_content('Egypt')
   end
 end

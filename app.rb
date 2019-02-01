@@ -2,11 +2,19 @@
 
 require 'sinatra/base'
 require_relative 'lib/bookmark'
-require_relative 'lib/add_url'
+require_relative 'lib/handle_url'
 require_relative 'lib/url'
 
 # class comment...
 class BookMarkManager < Sinatra::Base
+  enable :sessions, :method_override
+
+  delete '/bookmarks/:id' do
+
+  HandleUrl.delete_url(params['id'])
+  redirect '/bookmarks'
+  end
+
   get '/' do
     erb(:index)
   end
@@ -16,14 +24,14 @@ class BookMarkManager < Sinatra::Base
   end
 
   post '/add_urls' do
-    @url = Url.create(params[:new_url])
+    @url = Url.create(params[:new_url], params[:title])
 
     redirect '/add_url'
   end
 
   get '/add_url' do
     @url = Url.instance
-    AddUrl.add_url(@url.address)
+    HandleUrl.add_url(@url.address, @url.title)
 
     redirect '/bookmarks'
   end

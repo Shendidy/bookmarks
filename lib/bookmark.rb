@@ -13,17 +13,12 @@ class Bookmark
     @db = 'bookmark_manager_test' if ENV['ENVIRONMENT'] == 'test'
 
     connection = PG.connect(dbname: @db)
-    result = connection.exec('SELECT url FROM bookmarks ORDER BY id')
-    result.each { |bookmark| bookmarks_list << bookmark['url'] }
+    result = connection.exec('SELECT id, url, title FROM bookmarks ORDER BY id')
+    result.each do |bookmark|
+      bookmarks_list << { 'id' => bookmark['id'], 'url' =>
+        bookmark['url'], 'title' => bookmark['title'] }
+    end
 
     bookmarks_list
-  end
-
-  def self.create
-    @bookmark = Bookmark.new
-  end
-
-  def self.instance
-    @bookmark
   end
 end
