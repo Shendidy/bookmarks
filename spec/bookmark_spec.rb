@@ -4,14 +4,14 @@ require 'bookmark.rb'
 
 describe '.all' do
   it 'returns a list of bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
+    DatabaseConnection.setup('bookmark_manager_test')
 
     # Add the test data
-    connection.exec("INSERT INTO bookmarks (url, title)
+    DatabaseConnection.query("INSERT INTO bookmarks (url, title)
     VALUES ('http://www.makersacademy.com', 'Makers Academy');")
-    connection.exec("INSERT INTO bookmarks (url, title)
+    DatabaseConnection.query("INSERT INTO bookmarks (url, title)
     VALUES('http://www.destroyallsoftware.com', 'Destroy all software');")
-    connection.exec("INSERT INTO bookmarks (url, title)
+    DatabaseConnection.query("INSERT INTO bookmarks (url, title)
     VALUES('http://www.google.com', 'British google');")
 
     bookmarks = Bookmark.all
